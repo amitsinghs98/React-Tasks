@@ -1,0 +1,66 @@
+body {
+  background-color: white;
+  width: 100%;
+  align-items: center;
+  flex: auto;
+  align-content: center;
+}
+
+/* Basic button styles */
+.ProjectsHome {
+  display: inline-block;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: bold;
+  text-align: center;
+  text-decoration: none;
+  color: #fff;
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+/* Hover effect */
+.ProjectsHome:hover {
+  background-color: #0056b3;
+  transform: translateY(-2px);
+}
+
+/* Active effect */
+.ProjectsHome:active {
+  background-color: #004085;
+  transform: translateY(0);
+}
+
+/* Disabled state */
+.ProjectsHome:disabled {
+  background-color: #c0c0c0;
+  cursor: not-allowed;
+}
+
+/* Container to center the button */
+.ProjectsHome-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh; /* Full viewport height for vertical centering */
+}
+
+.arrayStyle {
+  background-color: beige;
+}
+
+.class-task1 {
+  width: 35%;
+  max-width: fit-content;
+  align-items: left;
+  align-content: center;
+}
+.class-task2 {
+  width: 35%;
+  max-width: fit-content;
+  align-items: right;
+  align-self: center;
+}
