@@ -3,18 +3,32 @@ import React, { useState } from "react";
 function SumCalculator() {
   const [num1, setNum1] = useState("");
   const [num2, setNum2] = useState("");
-  const [sum, setSum] = useState("");
+  const [sums, setSums] = useState([]);
+  const [isDisabled, setIsDisabled] = useState(false);
+  const [showResults, setShowResults] = useState(true);
 
   const handleSum = () => {
-    // Convert input values to numbers and compute sum
     const result = parseFloat(num1) + parseFloat(num2);
-    setSum(result); // Update the sum state
+    setSums([...sums, result]);
   };
+
   const handleClear = () => {
-    setSum("");
     setNum1("");
     setNum2("");
   };
+
+  const handleClearAll = () => {
+    setSums([]);
+  };
+
+  const toggleDisable = () => {
+    setIsDisabled(!isDisabled);
+  };
+
+  const toggleResults = () => {
+    setShowResults(!showResults);
+  };
+
   return (
     <>
       <h2>Sum Calculator</h2>
@@ -36,11 +50,34 @@ function SumCalculator() {
           />
         </div>
         <div>
-          <button onClick={handleSum}>Sum</button>
-          {sum && <button onClick={handleClear}>Clear Sum </button>}
+          <button onClick={handleSum} disabled={isDisabled}>
+            Sum
+          </button>
+          <button onClick={toggleDisable}>
+            {isDisabled ? "Enable Sum" : "Disable Sum"}
+          </button>
+          {sums.length > 0 && (
+            <button onClick={handleClearAll}>Clear Sums</button>
+          )}
+          {sums.length > 0 && (
+            <button onClick={toggleResults}>
+              {showResults ? "Hide Results" : "Show Results"}
+            </button>
+          )}
         </div>
       </div>
-      {sum && <input type="number" placeholder="Result is" value={sum} />}
+      {showResults && sums.length > 0 && (
+        <div>
+          <h3>Results:</h3>
+          <ul>
+            {sums.map((sum, index) => (
+              <li key={index}>
+                Result {index + 1}: {sum}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )}
     </>
   );
 }
